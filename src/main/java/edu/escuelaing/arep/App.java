@@ -17,9 +17,7 @@ public class App
                                         "  <input type=\"text\" name=\"numbers\"><br>\n" +
                                         "  <input type=\"submit\" value=\"Calcular\">\n" +
                                         "</form> "+
-                                         "<br>"+ req.body() +
-                                         "<br>"+ req.raw()+
-                                         "<br>"+ req.queryParams()
+                                         "<br>"+ req.queryParams("numbers")
                                          );
         post("/hello", (req,res) -> req.params("numbers"));
         
