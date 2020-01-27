@@ -13,7 +13,7 @@ public class App
         port(getPort());
      
         
-        get("/hello", (req, res) -> "Ingrese n numeros separados por comas <br>"+" <form action=\"#\">\n" +
+        get("/hello", (req, res) -> "Ingrese n numeros separados por comas <br>"+" <form action=\"\" method=\"POST\">\n" +
                                         "  <input type=\"text\" name=\"numbers\"><br>\n" +
                                         "  <input type=\"submit\" value=\"Calcular\">\n" +
                                         "</form> "+
