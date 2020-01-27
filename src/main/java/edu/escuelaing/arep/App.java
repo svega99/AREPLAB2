@@ -20,7 +20,7 @@ public class App
                                          "<br>"+ req.contentType() +
                                          "<br>"+ req.params()+
                                          "<br>"+ req.raw()+
-                                         "<br>"+ res.body()
+                                         "<br>"+ req.body()
                                          );
         post("/hello", (req,res) -> req.params("numbers"));
         
