@@ -1,6 +1,8 @@
 package edu.escuelaing.arep;
 
-
+import edu.escuelaing.arep.Calculator.Calculator;
+import edu.escuelaing.arep.LinkedListImpl.LinkedList;
+import java.util.List;
 import spark.*;
 import static spark.Spark.*;
 /**
@@ -23,7 +25,7 @@ public class App
                 = "<!DOCTYPE html>"
                 + "<html>"
                 + "<body>"
-                + "<h2>HTML Forms</h2>"
+                + "<h2>Mean and Standard Deviation Calculation</h2>"
                 + "<form action=\"/results\">"
                 + "  Enter n numbers separated by commas <br>"
                 + "  <input type=\"text\" name=\"numbers\" >"
@@ -37,7 +39,27 @@ public class App
     }
 
     private static String resultsPage(Request req, Response res) {
-        return req.queryParams("numbers");
+        
+        LinkedList<Double> listaLink=new LinkedList<Double>();
+        String[] listaNormal= req.queryParams("numbers").split(",");
+        
+        for (String i: listaNormal){
+            listaLink.add(Double.parseDouble(i));
+        }
+        
+        Double mean = Calculator.getMean(listaLink);
+        Double stDev = Calculator.getStandardDeviation(listaLink);
+        
+        String pageContent
+                = "<!DOCTYPE html>"
+                + "<html>"
+                + "<body>"
+                + "<h3>Mean: "+mean+"</h3>"
+                + "<h3>Standard Deviation: "+stDev+"</h3>"
+                + "</body>"
+                + "</html>";
+        
+        return pageContent;
     }
     
     
