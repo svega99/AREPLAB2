@@ -42,15 +42,28 @@ public class App
         
         LinkedList<Double> listaLink=new LinkedList<Double>();
         String[] listaNormal= req.queryParams("numbers").split(",");
+        String pageContent;
         
         for (String i: listaNormal){
-            listaLink.add(Double.parseDouble(i));
+            try {
+                listaLink.add(Double.parseDouble(i));
+            }
+            catch (NumberFormatException n){
+                pageContent
+                = "<!DOCTYPE html>"
+                + "<html>"
+                + "<body>"
+                + "<h2>Format Incorrect</h2>"
+                + "</body>"
+                + "</html>";
+            }
+      
         }
         
         Double mean = Calculator.getMean(listaLink);
         Double stDev = Calculator.getStandardDeviation(listaLink);
         
-        String pageContent
+        pageContent
                 = "<!DOCTYPE html>"
                 + "<html>"
                 + "<body>"
